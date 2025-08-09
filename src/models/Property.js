@@ -1,20 +1,16 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const PropertySchema = new mongoose.Schema({
-  ownerId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
-  title: { type: String, required: true },
+  ownerId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  title: String,
   description: String,
-  address: {
-    text: String,
-    lat: Number,
-    lng: Number,
-  },
-  rentPerMonth: { type: Number, required: true },
+  address: String,
+  rentPerMonth: Number,
   amenities: [String],
-  propertyType: { type: String, enum: ["apartment", "house", "studio", "other"], required: true },
+  propertyType: String,
   availabilityStart: Date,
   availabilityEnd: Date,
-  images: [String], // URLs or image paths
+  images: [String],
 }, { timestamps: true });
 
-export default mongoose.models.Property || mongoose.model("Property", PropertySchema);
+export default mongoose.models.Property || mongoose.model('Property', PropertySchema);
